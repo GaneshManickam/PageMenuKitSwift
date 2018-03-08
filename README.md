@@ -1,17 +1,23 @@
 # PageMenuKitSwift
 
-[PageMenuController](https://github.com/magickworx/PageMenuController) の Swift 版。
+[PageMenuController](https://github.com/magickworx/PageMenuController)  Swift。
 
-日本のニュース系アプリで使われている横スクロールのメニュー画面とそのコンテンツを表示するユーザインタフェースのクラス。
-Xcode のプロジェクト一式を登録してあるので、実行すればシミュレータ上で動作確認が可能。
+A class of the user interface that displays the side scroll menu screen used in news applications and its contents. Since Xcode's complete set of projects are registered, you can check the operation on the simulator if you run it.
 
-Swift3 で実装し直す際に、汎用的で拡張しやすいようにクラスを再設計した。ページメニューの見た目だけが違うので、スタイルごとに PMKPageMenuItem のサブクラスを実装し、それを利用する仕組みにした。よって、簡単にカスタムメニューを追加できる。
+When reimplementing with Swift 3, we redesigned the class to be versatile and easy to extend. Since only the appearance of the page menu is different, we implemented a subclass of PMKPageMenuItem for each style and used it. Therefore, you can easily add custom menus.
+
+## Installation
+
+```
+pod 'PageMenuKitSwift'
+```
+
 
 ## How to use PageMenuKit.framework
 
-Xcode の Build Target に PageMenuKitFatBinary を指定して Build を実行すると、PageMenuKit.framework が作成される。これを自作アプリの Xcode の Project で設定する。
+Running Build with Xcode's Build Target with PageMenuKitFatBinary creates PageMenuKit.framework. This is set in Project of Xcode of homebrew application.
 
-あとは、以下のようなコードを記述して利用する。
+After that, write the following code and use it.
 
 ```Swift
 class RootViewController: UIViewController
@@ -45,65 +51,64 @@ class RootViewController: UIViewController
 }
 ```
 
-より詳細なコードは PageMenuKitDemo 内の RootViewController.swift を見てね。
+For more detailed code look at RootViewController.swift in PageMenuKitDemo.
 
 
 ## Available Menu Styles
 
 ### .Plain
-[ニュースパス](https://itunes.apple.com/jp/app/id1106788059?mt=8) っぽいメニュー画面
+[News path](https://itunes.apple.com/jp/app/id1106788059?mt=8)  like menu screen
 
-![.Plain](screenshots/tab_Plain.png "ニュースパス")
+![.Plain](screenshots/tab_Plain.png "News path")
 
 ### .Tab
-[グノシー](https://itunes.apple.com/jp/app/id590384791?mt=8) っぽいメニュー画面
+[Gnochey](https://itunes.apple.com/jp/app/id590384791?mt=8) like menu screen
 
-![.Tab](screenshots/tab_Tab.png "グノシー")
+![.Tab](screenshots/tab_Tab.png "Gnochey")
 
 ### .Smart
-[SmartNews](https://itunes.apple.com/jp/app/id579581125?mt=8) っぽいメニュー画面
+[SmartNews](https://itunes.apple.com/jp/app/id579581125?mt=8) like menu screen
 
 ![.Smart](screenshots/tab_Smart.png "SmartNews")
 
 ### .Hacka
-[ハッカドール](https://itunes.apple.com/jp/app/id888231424?mt=8) っぽいメニュー画面
+[Hacka Doll](https://itunes.apple.com/jp/app/id888231424?mt=8) like menu screen
 
-![.Hacka](screenshots/tab_Hacka.png "ハッカドール")
+![.Hacka](screenshots/tab_Hacka.png "Hacka Doll")
 
 ### .Ellipse
-[JCnews](https://itunes.apple.com/jp/app/id1024341813?mt=8) っぽいメニュー画面
+[JCnews](https://itunes.apple.com/jp/app/id1024341813?mt=8) like menu screen
 
 ![.Ellipse](screenshots/tab_Ellipse.png "JCnews iOS App")
 
 ### .Web
-[JCnews のウェブサイト](https://jcnews.tokyo/) っぽいメニュー画面
+[JCnews website website](https://jcnews.tokyo/) like menu screen
 
-![.Web](screenshots/tab_Web.png "JCnews ウェブサイト")
+![.Web](screenshots/tab_Web.png "JCnews website website")
 
 ### .Suite
-[NewsSuite](https://itunes.apple.com/jp/app/id1176431318?mt=8) っぽいメニュー画面（背景色はグラデーション）
+[NewsSuite](https://itunes.apple.com/jp/app/id1176431318?mt=8) like menu screen (background color is gradation)
 
-![.Suite](screenshots/tab_Suite.png "ニュース（NewsSuite）")
+![.Suite](screenshots/tab_Suite.png "NewsSuite")
 
 ### .NetLab
-[ねとらぼ](https://itunes.apple.com/jp/app/id949325541?mt=8) っぽいメニュー画面（背景色は透明）
+[Netorabo](https://itunes.apple.com/jp/app/id949325541?mt=8) like menu screen
 
-![.NetLab](screenshots/tab_NetLab.png "ねとらぼ")
+![.NetLab](screenshots/tab_NetLab.png "Netorabo")
 
 ### .NHK
-[NHK ニュース・防災](https://itunes.apple.com/jp/app/id1121104608?mt=8) っぽいメニュー画面
+[NHK News · Disaster Prevention](https://itunes.apple.com/jp/app/id1121104608?mt=8) like menu screen
 
-![.NHK](screenshots/tab_NHK.png "NHK ニュース・防災")
+![.NHK](screenshots/tab_NHK.png "NHK News · Disaster Prevention")
 
 
 ## Examples
 
-PMKPageMenuController の initializer の menuColors に __[]__ を指定するとデフォルトの配色になる。ここでは、各スタイルごとに色を変更する例を示す。
+Specifying [] for menuColors of the initializer of PMKPageMenuController sets the default color scheme. Here, an example of changing the color for each style is shown.
 
 ### .Plain, .Hacka, .Ellipse, .NHK 
 
-.Plain, .Hacka, .Ellipse, .NHK の各スタイルで指定できる色は一つだけである。
-以下の例では .Plain スタイルに __紫（.purple）__ を設定している。
+.Plain, .Hacka, .Ellipse, .NHK styles can specify only one color. In the following example, purple (.purple) is set to .Plain style .
 
 ```swift
 pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Plain, menuColors: [ .purple ], topBarHeight: statusBarHeight)
@@ -127,9 +132,7 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 
 ### .Tab, .Smart
 
-.Tab, .Smart スタイルで指定できる色は一つ以上である。
-以下の例では .Tab スタイルに __赤、橙、黄、緑、青、紫__ を設定している。
-メニューの数が配色した数よりも多い場合は、順に色が適用される。
+.Tab, .Smart style can specify one or more colors. In the following example, red, orange, yellow, green, blue, purple are set in. Tab style . If the number of menus is larger than the number of colors, colors are applied in order.
 
 ```swift
 pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Tab, menuColors: [ .red, .orange, .yello, .green, .blue, .purple ], topBarHeight: statusBarHeight)
@@ -146,12 +149,9 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 
 ### .Web
 
-.Web スタイルも .Tab, .Smart スタイルと同様に指定できる色は一つ以上である。
-ただし、背景色は現在固定されている。
-また、現実装では最初に指定した色が境界線の色になる。
+As with the .Tab, .Smart style, Web styles can be specified with one or more colors. However, the background color is currently fixed. Also, in the current implementation, the color specified at the beginning is the color of the boundary line.
 
-以下の例では .Web スタイルに __赤、橙、黄、緑、青、紫__ を設定している。
-メニューの数が配色した数よりも多い場合は、順に色が適用される。
+In the following example, red, orange, yellow, green, blue, purple are set for Web style . If the number of menus is larger than the number of colors, colors are applied in order.
 
 ```swift
 pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Web, menuColors: [ .red, .orange, .yello, .green, .blue, .purple ], topBarHeight: statusBarHeight)
@@ -161,10 +161,7 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 
 
 ### .Suite
-
-.Suite スタイルで指定できる色は一つだけであるが、
-現状ではインジケータの色が変更されるだけである。
-以下の例では .Suite スタイルに __青（.blue）__ を設定している。
+Although there is only one color that can be specified with the Suite style, the color of the indicator is only changed at present. In the following example, blue (.blue) is set for the Suite style .
 
 ```swift
 pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Suite, menuColors: [ .blue ], topBarHeight: statusBarHeight)
@@ -175,9 +172,7 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 
 ### .NetLab
 
-.NetLab スタイルで指定できる色は一つだけである。
-現状では、非選択時の文字色に影響する。
-以下の例では .NetLab スタイルに __赤（.red）__ を設定している。
+Only one color can be specified in .NetLab style. Currently, it affects the color of characters when not selected. In the following example, red ( . Red) is set for .NetLab style .
 
 ```swift
 pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .NetLab, menuColors: [ .red ], topBarHeight: statusBarHeight)
@@ -188,33 +183,32 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 
 ## Delegate Methods (optional)
 
-ページの切り替え時に呼び出される Delegate を使うことも可能。
+It is also possible to use Delegate which is called when switching pages.
 
 ```swift
 pageMenuController?.delegate = self
 ```
 
-上記のような記述を追加して、必要に応じて以下のメソッドを実装してね。
-現時点では、 **.Hacka** スタイルのバッジ表示の際に利用しているだけ。
+Add the above description and implement the following methods as necessary. At the moment, I use it only when displaying a .Hacka style badge.
 
 ```PMKPageMenuControllerDelegte.swift
 public protocol PMKPageMenuControllerDelegate: class
 {
-  // ページ画面上でスワイプ操作による切り替えが行われる前に呼び出される
-  func pageMenuController(_ pageMenuController: PMKPageMenuController, willMoveTo viewController: UIViewController, at menuIndex: Int)
-  // ページの切り替えが完了した際に呼び出される
+  // Called before switching by swipe operation on page screen
+  func  pageMenuController ( _  pageMenuController : PMKPageMenuController, willMoveTo  viewController : UIViewController, at  menuIndex : Int )
+   // Called when page switching is complete
   func pageMenuController(_ pageMenuController: PMKPageMenuController, didMoveTo viewController: UIViewController, at menuIndex: Int)
 
-  // メニュー項目の作成などが完了した際に呼び出される
-  func pageMenuController(_ pageMenuController: PMKPageMenuController, didPrepare menuItems: [PMKPageMenuItem])
-  // メニューがタップされた際に呼び出される
+  // Called when creation of menu item etc. is completed
+  func  pageMenuController ( _  pageMenuController : PMKPageMenuController, didPrepare  menuItems : [PMKPageMenuItem])
+   // Called when the menu is tapped
   func pageMenuController(_ pageMenuController: PMKPageMenuController, didSelect menuItem: PMKPageMenuItem, at menuIndex: Int)
 }
 ```
 
 ## References
 
-Qiita の[ニュース系アプリのユーザインタフェース PageMenuKit の実装](http://qiita.com/magickworx/items/5de63eb926a9447b2665) も見てね。カスタムメニューの実装方法についても書いてあるよ。
+Also look at the implementation of PageMenuKit, the user interface of [Qiita's news applications](http://qiita.com/magickworx/items/5de63eb926a9447b2665) . It also describes how to implement custom menus.
 
 ## Requirements
 
@@ -222,32 +216,10 @@ Qiita の[ニュース系アプリのユーザインタフェース PageMenuKit 
  - iOS 11.0 or later
  - Xcode 9.0 or later
 
-## ToDo
+## All
 
- - .Suite と .Web と .NetLab スタイルのカスタマイズ方法
+ - .Suite, .Web and .NetLab style customization method
 
-## License Agreement
-
-Copyright (c) 2017, Kouichi ABE (WALL) All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice,
-    this list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+## Credits
+Since there is no Cocaopod and no English Readme for the original repo [PageMenuKitSwift](https://github.com/magickworx/PageMenuKitSwift). I have create an Cocaopod and English Readme. all credits goes to original repo [PageMenuKitSwift](https://github.com/magickworx/PageMenuKitSwift).
 
