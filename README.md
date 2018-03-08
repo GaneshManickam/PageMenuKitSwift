@@ -221,5 +221,5 @@ Also look at the implementation of PageMenuKit, the user interface of [Qiita's n
  - .Suite, .Web and .NetLab style customization method
 
 ## Credits
-Since there is no Cocaopod and no English Readme for the original repo [PageMenuKitSwift](https://github.com/magickworx/PageMenuKitSwift). I have create an Cocaopod and English Readme. all credits goes to original repo [PageMenuKitSwift](https://github.com/magickworx/PageMenuKitSwift).
+Since there is no Cocaopod installation option and no English Readme for the original repo [PageMenuKitSwift](https://github.com/magickworx/PageMenuKitSwift), I have create an Cocaopod and English Readme. All credits goes to original repo [PageMenuKitSwift](https://github.com/magickworx/PageMenuKitSwift) and owner [Kouichi ABE](https://github.com/magickworx).
 
