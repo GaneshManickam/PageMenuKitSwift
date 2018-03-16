@@ -43,7 +43,7 @@ class RootViewController: UIViewController
      *
      * menuColors: [] means that we will use the default colors
      */
-    pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Smart, menuColors: [], topBarHeight: statusBarHeight)
+    pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Smart, menuColors: [], topBarHeight: statusBarHeight,itemWidth:100)
     self.addChildViewController(pageMenuController!)
     self.view.addSubview(pageMenuController!.view)
     pageMenuController?.didMove(toParentViewController: self)
@@ -135,7 +135,7 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 .Tab, .Smart style can specify one or more colors. In the following example, red, orange, yellow, green, blue, purple are set in. Tab style . If the number of menus is larger than the number of colors, colors are applied in order.
 
 ```swift
-pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Tab, menuColors: [ .red, .orange, .yello, .green, .blue, .purple ], topBarHeight: statusBarHeight)
+pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Tab, menuColors: [ .red, .orange, .yello, .green, .blue, .purple ], topBarHeight: statusBarHeight,itemWidth:100)
 ```
 
 #### .Tab
@@ -154,7 +154,7 @@ As with the .Tab, .Smart style, Web styles can be specified with one or more col
 In the following example, red, orange, yellow, green, blue, purple are set for Web style . If the number of menus is larger than the number of colors, colors are applied in order.
 
 ```swift
-pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Web, menuColors: [ .red, .orange, .yello, .green, .blue, .purple ], topBarHeight: statusBarHeight)
+pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Web, menuColors: [ .red, .orange, .yello, .green, .blue, .purple ], topBarHeight: statusBarHeight,itemWidth:100)
 ```
 
 ![.Web](screenshots/ex_Web.png "Web")
@@ -164,7 +164,7 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 Although there is only one color that can be specified with the Suite style, the color of the indicator is only changed at present. In the following example, blue (.blue) is set for the Suite style .
 
 ```swift
-pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Suite, menuColors: [ .blue ], topBarHeight: statusBarHeight)
+pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Suite, menuColors: [ .blue ], topBarHeight: statusBarHeight,itemWidth:100)
 ```
 
 ![.Suite](screenshots/ex_Suite.png "Suite")
@@ -175,7 +175,7 @@ pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: 
 Only one color can be specified in .NetLab style. Currently, it affects the color of characters when not selected. In the following example, red ( . Red) is set for .NetLab style .
 
 ```swift
-pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .NetLab, menuColors: [ .red ], topBarHeight: statusBarHeight)
+pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .NetLab, menuColors: [ .red ], topBarHeight: statusBarHeight,itemWidth:100)
 ```
 
 ![.NetLab](screenshots/ex_NetLab.png "NetLab")
