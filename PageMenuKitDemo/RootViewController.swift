@@ -1,13 +1,13 @@
 /*****************************************************************************
  *
- * FILE:	RootViewController.swift
- * DESCRIPTION:	PageMenuKitDemo: Application Root View Controller
- * DATE:	Fri, Jun  2 2017
- * UPDATED:	Fri, Jun  9 2017
- * AUTHOR:	Kouichi ABE (WALL) / 阿部康一
- * E-MAIL:	kouichi@MagickWorX.COM
- * URL:		http://www.MagickWorX.COM/
- * COPYRIGHT:	(c) 2017 阿部康一／Kouichi ABE (WALL), All rights reserved.
+ * FILE:    RootViewController.swift
+ * DESCRIPTION:    PageMenuKitDemo: Application Root View Controller
+ * DATE:    Fri, Jun  2 2017
+ * UPDATED:    Fri, Jun  9 2017
+ * AUTHOR:    Kouichi ABE (WALL) / 阿部康一
+ * E-MAIL:    kouichi@MagickWorX.COM
+ * URL:        http://www.MagickWorX.COM/
+ * COPYRIGHT:    (c) 2017 阿部康一／Kouichi ABE (WALL), All rights reserved.
  * LICENSE:
  *
  *  Copyright (c) 2017 Kouichi ABE (WALL) <kouichi@MagickWorX.COM>,
@@ -45,74 +45,75 @@ import PageMenuKit
 
 class RootViewController: BaseViewController
 {
-  var pageMenuController: PMKPageMenuController? = nil
-
-  override func setup() {
-    super.setup()
-
-    self.title = "PageMenuKit Frameworks"
-  }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-  override func loadView() {
-    super.loadView()
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    var controllers: [UIViewController] = []
-    let dateFormatter = DateFormatter()
-    for month in dateFormatter.monthSymbols {
-      let viewController: DataViewController = DataViewController()
-      viewController.title = month
-      controllers.append(viewController)
+    var pageMenuController: PMKPageMenuController? = nil
+    
+    override func setup() {
+        super.setup()
+        
+        self.title = "PageMenuKit Frameworks"
     }
-
-    let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-    /*
-     * Available menuStyles:
-     * .Plain, .Tab, .Smart, .Hacka, .Ellipse, .Web, .Suite, .NetLab, .NHK
-     * See PMKPageMenuItem.swift in PageMenuKit folder.
-     * "menuColors: []" means that we will use the default colors.
-     */
-    pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Smart, menuColors: [], topBarHeight: statusBarHeight)
-//    pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Plain, menuColors: [.purple], topBarHeight: statusBarHeight)
-    pageMenuController?.delegate = self
-    self.addChildViewController(pageMenuController!)
-    self.view.addSubview(pageMenuController!.view)
-    pageMenuController?.didMove(toParentViewController: self)
-  }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-    self.navigationController?.navigationBar.isHidden = false
-  }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func loadView() {
+        super.loadView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var controllers: [UIViewController] = []
+        let dateFormatter = DateFormatter()
+        for month in dateFormatter.monthSymbols {
+            let viewController: DataViewController = DataViewController()
+            viewController.title = month
+            controllers.append(viewController)
+        }
+        
+        let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        /*
+         * Available menuStyles:
+         * .Plain, .Tab, .Smart, .Hacka, .Ellipse, .Web, .Suite, .NetLab, .NHK
+         * See PMKPageMenuItem.swift in PageMenuKit folder.
+         * "menuColors: []" means that we will use the default colors.
+         */
+        pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Smart, menuColors: [], topBarHeight: statusBarHeight,itemWidth:100)
+        //    pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Plain, menuColors: [.purple], topBarHeight: statusBarHeight)
+        pageMenuController?.delegate = self
+        self.addChildViewController(pageMenuController!)
+        self.view.addSubview(pageMenuController!.view)
+        pageMenuController?.didMove(toParentViewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
 }
 
 extension RootViewController: PMKPageMenuControllerDelegate
 {
-  func pageMenuController(_ pageMenuController: PMKPageMenuController, willMoveTo viewController: UIViewController, at menuIndex: Int) {
-  }
-
-  func pageMenuController(_ pageMenuController: PMKPageMenuController, didMoveTo viewController: UIViewController, at menuIndex: Int) {
-  }
-
-  func pageMenuController(_ pageMenuController: PMKPageMenuController, didPrepare menuItems: [PMKPageMenuItem]) {
-    // XXX: For .Hacka style
-    var i: Int = 1
-    for item: PMKPageMenuItem in menuItems {
-      item.badgeValue = String(format: "%zd", i)
-      i += 1
+    func pageMenuController(_ pageMenuController: PMKPageMenuController, willMoveTo viewController: UIViewController, at menuIndex: Int) {
     }
-  }
-
-  func pageMenuController(_ pageMenuController: PMKPageMenuController, didSelect menuItem: PMKPageMenuItem, at menuIndex: Int) {
-    menuItem.badgeValue = nil // XXX: For .Hacka style
-  }
+    
+    func pageMenuController(_ pageMenuController: PMKPageMenuController, didMoveTo viewController: UIViewController, at menuIndex: Int) {
+    }
+    
+    func pageMenuController(_ pageMenuController: PMKPageMenuController, didPrepare menuItems: [PMKPageMenuItem]) {
+        // XXX: For .Hacka style
+        var i: Int = 1
+        for item: PMKPageMenuItem in menuItems {
+            item.badgeValue = String(format: "%zd", i)
+            i += 1
+        }
+    }
+    
+    func pageMenuController(_ pageMenuController: PMKPageMenuController, didSelect menuItem: PMKPageMenuItem, at menuIndex: Int) {
+        menuItem.badgeValue = nil // XXX: For .Hacka style
+    }
 }
+
