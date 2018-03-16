@@ -111,7 +111,7 @@ Specifying [] for menuColors of the initializer of PMKPageMenuController sets th
 .Plain, .Hacka, .Ellipse, .NHK styles can specify only one color. In the following example, purple (.purple) is set to .Plain style .
 
 ```swift
-pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Plain, menuColors: [ .purple ], topBarHeight: statusBarHeight)
+pageMenuController = PMKPageMenuController(controllers: controllers, menuStyle: .Plain, menuColors: [ .purple ], topBarHeight: statusBarHeight,itemWidth:100)
 ```
 #### .Plain
 
