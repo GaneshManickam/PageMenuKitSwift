@@ -323,6 +323,8 @@ extension PMKPageMenuController
                 color = PMKPageMenuController.standardColors.first!
             }
         }
+        
+        color = .clear
         let  width: CGFloat = self.scrollView!.contentSize.width
         let height: CGFloat = self.scrollView!.frame.size.height
         
@@ -382,6 +384,15 @@ extension PMKPageMenuController
             self.pageViewController?.setViewControllers(viewControllers, direction: direction, animated: true, completion: nil)
         }
     }
+    
+    public func  movePageTo(index:Int) {
+        let  viewController: UIViewController = self.childControllers[index]
+        let viewControllers: [UIViewController] = [viewController]
+        let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .forward : .reverse
+        self.currentIndex = index
+        self.pageViewController?.setViewControllers(viewControllers, direction: direction, animated: true, completion: nil)
+    }
+    
     
     /*
      * swift3 - how to create instance of a class from a string in swift 3
@@ -583,5 +594,3 @@ extension PMKPageMenuController: UIPageViewControllerDataSource
     }
     
 }
-
-
