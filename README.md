@@ -206,6 +206,11 @@ public protocol PMKPageMenuControllerDelegate: class
 }
 ```
 
+## To move tab to particular index position
+```
+pageMenuController?.movePageTo(index:0)
+```
+
 ## References
 
 Also look at the implementation of PageMenuKit, the user interface of [Qiita's news applications](http://qiita.com/magickworx/items/5de63eb926a9447b2665) . It also describes how to implement custom menus.
